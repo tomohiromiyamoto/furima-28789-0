@@ -23,7 +23,7 @@
 | Column        | Type       | Option            |
 | ------------- | ---------- | ----------------- |
 | name          | string     | null: false       |
-| description   | text       | null: false       |
+| introduction  | text       | null: false       |
 | category_id   | integer    | null: false       |
 | condition     | integer    | null: false       |
 | delivery_fee  | integer    | null: false       |
