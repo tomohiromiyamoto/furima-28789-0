@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :prefecture
-
+  has_one :deal
 
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'が設定可能範囲を超えています' }
   with_options presence: true do
