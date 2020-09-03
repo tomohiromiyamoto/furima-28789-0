@@ -14,7 +14,7 @@
 ### Association
 
 -has_many :items
--has_many :comments, through: :items_comments
+-has_many :deals
 -has_many :buys
 -has_many :item_purchases
 
@@ -34,18 +34,20 @@
 
 ### Association
 
--belongs_to :user
--has_many :comments, through: :items_comments
--has_one :buy
--has_one :item_purchase
+-has_many_attached :images
+-belongs_to        :user
+-belongs_to        :category
+-belongs_to        :prefecture
+-has_one           :deal
+-has_one           :buy
+-has_one           :item_purchase
 
-## items_comments テーブル
+## deals テーブル
 
-| Column  | Type       | Option                         |
-| ------- | ---------- | ------------------------------ |
-| comment | text       | null: false                    |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
+| Column  | Type       | Option            |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
 
