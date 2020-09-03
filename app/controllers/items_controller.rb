@@ -19,13 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-    render :show unless @item.user_id == current_user
-  end
-
   def destroy
     if @item.destroy
       redirect_to root_path
