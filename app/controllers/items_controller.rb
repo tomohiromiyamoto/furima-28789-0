@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_item, only: [:show, :destroy, :edit]
 
   def index
     @items = Item.all
@@ -18,6 +19,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+    render :show unless @item.user_id == current_user
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def item_params
@@ -33,5 +49,9 @@ class ItemsController < ApplicationController
                   :prefecture_id,
                   images: [])
           .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
