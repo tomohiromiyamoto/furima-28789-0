@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-
     name { 'test' }
     introduction { 'test' }
     condition { 1 }
