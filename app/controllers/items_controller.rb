@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_item, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_item, only: %i[show destroy edit update]
 
   def index
     @items = Item.all
@@ -27,8 +27,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     render :show unless @item.user_id == current_user.id
@@ -47,15 +46,16 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item)
           .permit(
-                  :name,
-                  :introduction,
-                  :category_id,
-                  :condition,
-                  :price,
-                  :delivery_fee,
-                  :delivery_days,
-                  :prefecture_id,
-                  images: [])
+            :name,
+            :introduction,
+            :category_id,
+            :condition,
+            :price,
+            :delivery_fee,
+            :delivery_days,
+            :prefecture_id,
+            images: []
+          )
           .merge(user_id: current_user.id)
   end
 

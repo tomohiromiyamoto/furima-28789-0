@@ -54,17 +54,17 @@
 -belongs_to :user
 -belongs_to :item
 
-## buys テーブル
+## address テーブル
 
-| Column               | Type    | Option                         |
-| -------------------- | ------- | ------------------------------ |
-| postal_code          | string  | null: false                    |
-| Prefectures_genre_id | integer | null: false                    |
-| municipalities       | string  | null: false                    |
-| block_number         | string  | null: false                    |
-| building_name        | string  | null: false                    |
-| telephone_number     | string  | null: false                    |
-| item_id              | integer | null: false, foreign_key: true |
+| Column         | Type       | Option            |
+| -------------- | ---------- | ----------------- |
+| postal_code    | string     | null: false       |
+| prefectures_id | integer    | null: false       |
+| city           | string     | null: false       |
+| address        | string     | null: false       |
+| building       | string     | null: false       |
+| phone_number   | string     | null: false       |
+| deal           | references | foreign_key: true |
 
 ### Association
 

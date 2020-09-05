@@ -27,7 +27,7 @@ RSpec.describe Item, type: :model do
     it 'カテゴリーの情報が必須であること' do
       @item.category_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category を選択してください")
+      expect(@item.errors.full_messages).to include('Category を選択してください')
     end
 
     it '商品の状態についての情報が必須であること' do
@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
     it '発送元の地域についての情報が必須であること' do
       @item.prefecture_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Prefecture を選択してください")
+      expect(@item.errors.full_messages).to include('Prefecture を選択してください')
     end
 
     it '価格についての情報が必須であること' do
@@ -61,16 +61,16 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格の範囲が、¥300未満はNG' do
-      @item.price = "200"
+      @item.price = '200'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price が設定可能範囲を超えています")
+      expect(@item.errors.full_messages).to include('Price が設定可能範囲を超えています')
     end
 
     it '価格の範囲が、¥9,999,999以上はNG' do
-      @item.price = "10000000"
+      @item.price = '10000000'
       @item.valid?
       binding.pry
-      expect(@item.errors.full_messages).to include("Price が設定可能範囲を超えています")
+      expect(@item.errors.full_messages).to include('Price が設定可能範囲を超えています')
     end
   end
 end
