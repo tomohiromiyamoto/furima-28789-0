@@ -21,7 +21,19 @@ RSpec.describe PaymentForm, type: :model do
     it '郵便番号にハイフンがない' do
       @payment_form.postal_code = '0000000'
       @payment_form.valid?
-      expect(@payment_form.errors.full_messages).to include('Postal code を入力してください')
+      expect(@payment_form.errors.full_messages).to include("Postal code を入力してください")
+    end
+
+    it '郵便番号の桁数が足りない' do
+      @payment_form.postal_code = '00-000'
+      @payment_form.valid?
+      expect(@payment_form.errors.full_messages).to include("Postal code を入力してください")
+    end
+
+    it '郵便番号の桁数が多い' do
+      @payment_form.postal_code = '0000-00000'
+      @payment_form.valid?
+      expect(@payment_form.errors.full_messages).to include("Postal code を入力してください")
     end
 
     it '都道府県が選択されていないと購入できない' do
