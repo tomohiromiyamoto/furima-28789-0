@@ -255,7 +255,7 @@ a {
   position: relative;
 }
 
-.item-img {
+.item_box_img {
   width: 33vh;
   height: 33vh;
 }
@@ -306,6 +306,10 @@ a {
 
 .star-count {
   font-size: 2vh;
+}
+
+ul {
+  list-style: none;
 }
 
 /* //商品一覧 */
